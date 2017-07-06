@@ -144,18 +144,18 @@ const projectEditReward = {
                         message: ctrl.errors(),
                         error: true
                     }) : ''),
-                    m('.w-row',
-                        m('.w-col.w-col-8.w-col-push-2',
-                            m('.u-marginbottom-60.u-text-center',
-                                m('.w-inline-block.card.fontsize-small.u-radius',
-                                    [
-                                        m('span.fa.fa-lightbulb-o'),
-                                        m.trust(` ${I18n.t('reward_know_more_cta_html', I18nScope())}`)
-                                    ]
-                                )
-                            )
-                        )
-                    ),
+                    // m('.w-row',
+                    //     m('.w-col.w-col-8.w-col-push-2',
+                    //         m('.u-marginbottom-60.u-text-center',
+                    //             m('.w-inline-block.card.fontsize-small.u-radius',
+                    //                 [
+                    //                     m('span.fa.fa-lightbulb-o'),
+                    //                     m.trust(` ${I18n.t('reward_know_more_cta_html', I18nScope())}`)
+                    //                 ]
+                    //             )
+                    //         )
+                    //     )
+                    // ),
                     m('.w-row',
                         [
                             m('.w-col.w-col-9',

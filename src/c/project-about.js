@@ -41,8 +41,8 @@ const projectAbout = {
                     rewardDetails: args.rewardDetails
                 }), fundingPeriod()
             ] : [
-                m('.fontsize-base.fontweight-semibold.u-marginbottom-30', 'Suggestions for support'),
-                m.component(projectSuggestedContributions, {project: args.project}),
+                // m('.fontsize-base.fontweight-semibold.u-marginbottom-30', 'Suggestions for support'),
+                // m.component(projectSuggestedContributions, {project: args.project}),
                 fundingPeriod()
             ])
         ]);

@@ -57,7 +57,8 @@ const projectEdit = {
                         }),
                         '#user_settings': m(projectEditTab, {
                             title: I18n.t('user_settings', I18nScope()),
-                            subtitle: I18n.t('user_settings_subtitle', I18nScope()),
+                            // subtitle: I18n.t('user_settings_subtitle', I18nScope()),
+                            subtitle: '',
                             content: m(projectEditUserSettings, _.extend({}, c_opts))
                         }),
                         '#user_about': m(projectEditTab, {

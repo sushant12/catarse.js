@@ -24,7 +24,7 @@ const adminBalanceTranfers = {
                       component: filterMain,
                       data: {
                           vm: filterVM.full_text_index,
-                          placeholder: 'Busque pelo email, ids do usuario, ids de transferencia e eventos de saldo'
+                          placeholder: 'Search for email hair, user ids, transfer ids and balance events'
                       }
                   },
                   {

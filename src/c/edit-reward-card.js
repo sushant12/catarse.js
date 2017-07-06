@@ -137,7 +137,7 @@ const editRewardCard = {
                     m('.w-row', [
                         m('.w-col.w-col-5',
                             m('label.fontsize-smaller',
-                                'Título:'
+                                'Title:'
                             )
                         ),
                         m('.w-col.w-col-7',
@@ -151,14 +151,14 @@ const editRewardCard = {
                     m('.w-row.u-marginbottom-20', [
                         m('.w-col.w-col-5',
                             m('label.fontsize-smaller',
-                                'Valor mínimo:'
+                                'Minimum value:'
                             )
                         ),
                         m('.w-col.w-col-7', [
                             m('.w-row', [
                                 m('.w-col.w-col-3.w-col-small-3.w-col-tiny-3.text-field.positive.prefix.no-hover',
                                     m('.fontsize-smallest.fontcolor-secondary.u-text-center',
-                                        'R$'
+                                        'Rs'
                                     )
                                 ),
                                 m('.w-col.w-col-9.w-col-small-9.w-col-tiny-9',
@@ -171,10 +171,10 @@ const editRewardCard = {
                                     })
                                 )
                             ]),
-                            ctrl.minimumValueError() ? inlineError('Valor deve ser igual ou superior a R$10.') : '',
+                            ctrl.minimumValueError() ? inlineError('Amount must be equal to or greater than Rs 10.') : '',
 
                             m(".fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for='reward_minimum_value']",
-                                'Informe um valor mínimo maior ou igual a 10'
+                                'Enter a minimum value greater than or equal to 10'
                             )
                         ])
                     ]),
@@ -182,7 +182,7 @@ const editRewardCard = {
                         m('.w-col.w-col-5',
                             m('label.fontsize-smaller',
 
-                                'Previsão de entrega:'
+                                'Delivery forecast:'
                             )
                         ),
                         m('.w-col.w-col-7',
@@ -223,86 +223,86 @@ const editRewardCard = {
                                     ])
                                 )
                             ),
-                            ctrl.deliverAtError() ? inlineError('Data de entrega não pode ser no passado.') : '',
+                            ctrl.deliverAtError() ? inlineError('Delivery date can not be in the past.') : '',
                         )
                     ]),
                     m('.w-row',
                         m('label.fontsize-smaller',
-                            'Descrição:'
+                            'Description:'
                         )
                     ),
                     m('.w-row', [
-                        m(`textarea.text.required.w-input.text-field.positive.height-medium[aria-required='true'][placeholder='Descreva sua recompensa'][required='required'][id='project_rewards_attributes_${index}_description']`, {
+                        m(`textarea.text.required.w-input.text-field.positive.height-medium[aria-required='true'][placeholder='Describe your reward'][required='required'][id='project_rewards_attributes_${index}_description']`, {
                             name: `project[rewards_attributes][${index}][description]`,
                             value: ctrl.fields.description(),
                             class: ctrl.descriptionError() ? 'error' : false,
                             onchange: m.withAttr('value', ctrl.fields.description)
                         }),
                         m(".fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for='reward_description']",
-                            'Descrição não pode ficar em branco'
+                            'Description can not be empty'
                         )
                     ]),
-                    ctrl.descriptionError() ? inlineError('Descrição não pode ficar em branco.') : '', ,
-                    m('.u-marginbottom-30.w-row', [
-                        m('.w-col.w-col-3',
-                            m("label.fontsize-smaller[for='field-2']",
-                                'Tipo de entrega'
-                            )
-                        ),
-                        m('.w-col.w-col-9', [
-                            m(`select.positive.text-field.w-select[id='project_rewards_attributes_${index}_shipping_options']`, {
-                                name: `project[rewards_attributes][${index}][shipping_options]`,
-                                value: ctrl.fields.shipping_options() || 'free',
-                                onchange: (e) => {
-                                    ctrl.fields.shipping_options(e.target.value);
-                                    ctrl.updateOptions();
-                                }
-                            }, [
-                                m('option[value=\'international\']',
-                                    'Frete Nacional e Internacional'
-                                ),
-                                m('option[value=\'national\']',
-                                    'Frete Nacional'
-                                ),
-                                m('option[value=\'free\']',
-                                    'Sem frete envolvido'
-                                ),
-                                m('option[value=\'presential\']',
-                                    'Retirada presencial'
-                                )
-                            ]),
-
-                            ((ctrl.fields.shipping_options() === 'national' || ctrl.fields.shipping_options() === 'international') ?
-                                m('.card.card-terciary', [
-
-                                    // state fees
-                                    (_.map(fees, (fee, feeIndex) => [m(shippingFeeInput, {
-                                        fee,
-                                        fees: ctrl.fees,
-                                        index,
-                                        feeIndex,
-                                        states: ctrl.states
-                                    }),
-
-                                    ])),
-                                    m('.u-margintop-20',
-                                        m("a.alt-link[href='#']", {
-                                            onclick: () => {
-                                                ctrl.fees().push(newFee);
-                                                return false;
-                                            }
-
-                                        },
-                                            'Adicionar destino'
-                                        )
-                                    )
-                                ]) : '')
-                        ])
-                    ]),
-                    m('.w-row.u-margintop-30', [
+                    ctrl.descriptionError() ? inlineError('Description can not be empty.') : '', ,
+                    // m('.u-marginbottom-30.w-row', [
+                    //     m('.w-col.w-col-3',
+                    //         m("label.fontsize-smaller[for='field-2']",
+                    //             'Tipo de entrega'
+                    //         )
+                    //     ),
+                    //     m('.w-col.w-col-9', [
+                    //         m(`select.positive.text-field.w-select[id='project_rewards_attributes_${index}_shipping_options']`, {
+                    //             name: `project[rewards_attributes][${index}][shipping_options]`,
+                    //             value: ctrl.fields.shipping_options() || 'free',
+                    //             onchange: (e) => {
+                    //                 ctrl.fields.shipping_options(e.target.value);
+                    //                 ctrl.updateOptions();
+                    //             }
+                    //         }, [
+                    //             m('option[value=\'international\']',
+                    //                 'Frete Nacional e Internacional'
+                    //             ),
+                    //             m('option[value=\'national\']',
+                    //                 'Frete Nacional'
+                    //             ),
+                    //             m('option[value=\'free\']',
+                    //                 'Sem frete envolvido'
+                    //             ),
+                    //             m('option[value=\'presential\']',
+                    //                 'Retirada presencial'
+                    //             )
+                    //         ]),
+                    //
+                    //         ((ctrl.fields.shipping_options() === 'national' || ctrl.fields.shipping_options() === 'international') ?
+                    //             m('.card.card-terciary', [
+                    //
+                    //                 // state fees
+                    //                 (_.map(fees, (fee, feeIndex) => [m(shippingFeeInput, {
+                    //                     fee,
+                    //                     fees: ctrl.fees,
+                    //                     index,
+                    //                     feeIndex,
+                    //                     states: ctrl.states
+                    //                 }),
+                    //
+                    //                 ])),
+                    //                 m('.u-margintop-20',
+                    //                     m("a.alt-link[href='#']", {
+                    //                         onclick: () => {
+                    //                             ctrl.fees().push(newFee);
+                    //                             return false;
+                    //                         }
+                    //
+                    //                     },
+                    //                         'Adicionar destino'
+                    //                     )
+                    //                 )
+                    //             ]) : '')
+                    //     ])
+                    // ]),
+                    m('.Limit must be greater than amount of supportsw-row.u-margintop-30', [
                         (reward.newReward ? '' :
                             m('.w-col.w-col-5.w-col-small-5.w-col-tiny-5.w-sub-col-middle',
-                                m("input.w-button.btn-terciary.btn.btn-small.reward-close-button[type='submit'][value='Fechar']", {
+                                m("input.w-button.btn-terciary.btn.btn-small.reward-close-button[type='submit'][value='Close']", {
                                     onclick: () => {
                                         reward.edit.toggle();
                                     }

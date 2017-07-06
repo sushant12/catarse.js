@@ -69,18 +69,18 @@ const menuProfile = {
                                         ),
                                         m('ul.w-list-unstyled.u-marginbottom-20',
                                             [
+                                                // m('li.lineheight-looser',
+                                                //   m(`a.alt-link.fontsize-smaller[href='/en/users/${user.id}/edit#balance']`,
+                                                //     m('span', [
+                                                //         'Balance ',
+                                                //         (ctrl.userBalance() > 0 ? m('span.fontcolor-secondary',
+                                                //           `Rs ${h.formatNumber(ctrl.userBalance(), 2, 3)}`) : ''),
+                                                //     ])
+                                                //    )
+                                                //  ),
                                                 m('li.lineheight-looser',
-                                                  m(`a.alt-link.fontsize-smaller[href='/en/users/${user.id}/edit#balance']`,
-                                                    m('span', [
-                                                        'Saldo ',
-                                                        (ctrl.userBalance() > 0 ? m('span.fontcolor-secondary',
-                                                          `Rs ${h.formatNumber(ctrl.userBalance(), 2, 3)}`) : ''),
-                                                    ])
-                                                   )
-                                                 ),
-                                                m('li.lineheight-looser',
-                                                    m(`a.alt-link.fontsize-smaller[href='/pt/users/${user.id}/edit#contributions']`,
-                                                        'Histórico de apoio'
+                                                    m(`a.alt-link.fontsize-smaller[href='/en/users/${user.id}/edit#contributions']`,
+                                                        'Support History'
                                                     )
                                                 ),
                                                 m('li.lineheight-looser',
@@ -102,7 +102,7 @@ const menuProfile = {
                                             [
                                                 m('li.lineheight-looser',
                                                   m('a.alt-link.fontsize-smaller[href=\'/connect-facebook/\']',
-                                                    'Encontre amigos'
+                                                    'Find Friends'
                                                    ),
                                                  ),
                                                 m('li.lineheight-looser',
@@ -112,7 +112,7 @@ const menuProfile = {
                                                 ),
                                                 m('li.lineheight-looser',
                                                     m(`a.alt-link.fontsize-smaller[href='/en/users/${user.id}/edit#settings']`,
-                                                        'Notifications'
+                                                        'Settings'
                                                     )
                                                 )
 //                                                 m('li.lineheight-looser',
@@ -149,14 +149,14 @@ const menuProfile = {
                                                         'Support'
                                                     )
                                                 ),
-                                                m('li.lineheight-looser',
-                                                  m('a.alt-link.fontsize-smaller[href=\'/en/new-admin#/balance-transfers\']',
-                                                    'Saques'
-                                                   )
-                                                 ),
+                                                // m('li.lineheight-looser',
+                                                //   m('a.alt-link.fontsize-smaller[href=\'/en/new-admin#/balance-transfers\']',
+                                                //     'Balance Transfer'
+                                                //    )
+                                                //  ),
                                                 m('li.lineheight-looser',
                                                     m('a.alt-link.fontsize-smaller[href=\'/en/admin/financials\']',
-                                                        'Rel. Financeiros'
+                                                        'Financial Relation'
                                                     )
                                                 ),
                                                 m('li.lineheight-looser',

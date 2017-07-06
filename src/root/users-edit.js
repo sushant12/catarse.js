@@ -91,9 +91,9 @@ const usersEdit = {
                             m(`a.dashboard-nav-link${(ctrl.hash() === '#notifications' ? '.selected' : '')}[data-target='#dashboard_notifications'][href='#notifications'][id='dashboard_notifications_link']`,
                                 'Notifications'
                             ),
-                            m(`a.dashboard-nav-link${(ctrl.hash() === '#balance' ? '.selected' : '')}[data-target='#dashboard_balance'][href='#balance'][id='dashboard_balance_link']`,
-                              'Saldo'
-                             ),
+                            // m(`a.dashboard-nav-link${(ctrl.hash() === '#balance' ? '.selected' : '')}[data-target='#dashboard_balance'][href='#balance'][id='dashboard_balance_link']`,
+                            //   'Balance'
+                            //  ),
                             m(`a.dashboard-nav-link.u-right-big-only[href='/en/users/${user.id}']`, {
                                 config: m.route,
                                 onclick: () => {

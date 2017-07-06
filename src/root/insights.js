@@ -252,23 +252,23 @@ const insights = {
                                 ])
                             ]),
                         ]),
-                        m('.w-row', [
-                            m('.w-col.w-col-12.u-text-center', [
-                                m('.project-contributions-per-ref', [
-                                    m('.fontweight-semibold.u-marginbottom-10.fontsize-large.u-text-center', I18n.t('location_origin_title', I18nScope())),
-                                    !ctrl.lContributionsPerLocation() ? !_.isEmpty(_.rest(ctrl.contributionsPerLocationTable)) ? m.component(projectDataTable, {
-                                        table: ctrl.contributionsPerLocationTable,
-                                        defaultSortIndex: -2
-                                    }) : m('.card.u-radius.medium.u-marginbottom-60',
-                                            m('.w-row.u-text-center.u-margintop-40.u-marginbottom-40',
-                                                m('.w-col.w-col-8.w-col-push-2',
-                                                    m('p.fontsize-base', I18n.t('contributions_per_location_empty', I18nScope()))
-                                                )
-                                            )
-                                        ) : h.loader()
-                                ])
-                            ]),
-                        ]),
+                        // m('.w-row', [
+                        //     m('.w-col.w-col-12.u-text-center', [
+                        //         m('.project-contributions-per-ref', [
+                        //             m('.fontweight-semibold.u-marginbottom-10.fontsize-large.u-text-center', I18n.t('location_origin_title', I18nScope())),
+                        //             !ctrl.lContributionsPerLocation() ? !_.isEmpty(_.rest(ctrl.contributionsPerLocationTable)) ? m.component(projectDataTable, {
+                        //                 table: ctrl.contributionsPerLocationTable,
+                        //                 defaultSortIndex: -2
+                        //             }) : m('.card.u-radius.medium.u-marginbottom-60',
+                        //                     m('.w-row.u-text-center.u-margintop-40.u-marginbottom-40',
+                        //                         m('.w-col.w-col-8.w-col-push-2',
+                        //                             m('p.fontsize-base', I18n.t('contributions_per_location_empty', I18nScope()))
+                        //                         )
+                        //                     )
+                        //                 ) : h.loader()
+                        //         ])
+                        //     ]),
+                        // ]),
                         m('.w-row', [
                             m('.w-col.w-col-12.u-text-center', [
                                 m.component(projectReminderCount, {
