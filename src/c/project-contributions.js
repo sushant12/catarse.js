@@ -192,16 +192,16 @@ const projectContributions = {
                              xAxis: (item) => h.momentify(item.paid_at),
                              emptyState: 'Unaccounted support'
                          }) : h.loader()]),
-                     ]),
-                     m('.w-row',
-                       m('.w-col.w-col-12.u-text-center', [
-                           m('.fontweight-semibold.u-marginbottom-10.fontsize-large.u-text-center', 'Where does the support come from?'),
-                           (!ctrl.lContributionsPerLocation() ? !_.isEmpty(_.rest(ctrl.contributionsPerLocationTable)) ? m.component(projectDataTable, {
-                               table: ctrl.contributionsPerLocationTable,
-                               defaultSortIndex: -2
-                           }) : '' : h.loader())
-                       ])
-                      )
+                     ])
+                     // m('.w-row',
+                     //   m('.w-col.w-col-12.u-text-center', [
+                     //       m('.fontweight-semibold.u-marginbottom-10.fontsize-large.u-text-center', 'Where does the support come from?'),
+                     //       (!ctrl.lContributionsPerLocation() ? !_.isEmpty(_.rest(ctrl.contributionsPerLocationTable)) ? m.component(projectDataTable, {
+                     //           table: ctrl.contributionsPerLocationTable,
+                     //           defaultSortIndex: -2
+                     //       }) : '' : h.loader())
+                     //   ])
+                     //  )
                  ])));
     }
 };

@@ -77,7 +77,7 @@ const projectsContribution = {
                             m('.fontsize-small.fontweight-semibold', I18n.t('contribution_warning.title', I18nScope())),
                             m('.fontsize-smaller.u-marginbottom-10', I18n.t('contribution_warning.subtitle', I18nScope())),
                             m('.fontcolor-secondary.fontsize-smallest.u-marginbottom-10', I18n.t('contribution_warning.info', I18nScope())),
-                            m(`a.alt-link.fontsize-smallest[href="${I18n.t('contribution_warning.link')}"]`, I18n.t('contribution_warning.link_label', I18nScope()))
+                            // m(`a.alt-link.fontsize-smallest[href="${I18n.t('contribution_warning.link')}"]`, I18n.t('contribution_warning.link_label', I18nScope()))
                         ]),
                         m.component(faqBox, {
                             mode: project().mode,

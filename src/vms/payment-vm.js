@@ -52,7 +52,7 @@ const paymentVM = () => {
 
     const populateForm = (fetchedData) => {
         const data = _.first(fetchedData) || { address: {} },
-            defaultCountry = (fields.countries() ? _.findWhere(fields.countries(), { name: 'Brasil' }).id : null),
+            defaultCountry = (fields.countries() ? _.findWhere(fields.countries(), { name: 'Nepal' }).id : null),
             countryId = (data.address && data.address.country_id) || defaultCountry;
 
         if (!_.isEmpty(data.address)) {
@@ -170,9 +170,11 @@ const paymentVM = () => {
     const validate = () => {
         fields.errors([]);
 
-        checkEmptyFields(['completeName', 'zipCode', 'street', 'userState', 'city', 'userCountryId']);
+        // checkEmptyFields(['completeName', 'zipCode', 'street', 'userState', 'city', 'userCountryId']);
+        checkEmptyFields(['completeName', 'street', 'city', 'userCountryId']);
 
         if (!isInternational()) {
+            debugger
             checkEmptyFields(['phone', 'number', 'neighbourhood', 'ownerDocument', 'userState']);
             checkUserState();
             checkDocument();

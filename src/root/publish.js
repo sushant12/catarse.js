@@ -119,7 +119,7 @@ const publish = {
                           ' ',
                           m('span.fontweight-semibold', 'Deadline for transfer')
                       ]),
-                      m('div', m.trust('When the deadline for your project comes to an end, you should verify your bank details. You may change the Bank, Account and the Agency <strong>Only if the new registered account is owned by you</strong>. Upon confirmation, Grasruts will deposit into your checking account within 10 business days. The amount deposited will already be considering the 5% discount of the fee.'))
+                      m('div', m.trust('When the deadline for your project comes to an end, you should verify your bank details. Upon confirmation, Grasruts will deposit into your checking account within 10 business days. The amount deposited will already be considering the 5% discount of the fee.'))
                   ]),
                   m('.w-col.w-col-11', [
                       m('div', [

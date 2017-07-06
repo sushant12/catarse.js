@@ -104,12 +104,12 @@ const projectRewardCard = {
             }, ctrl.selectReward(reward)),
             config: ctrl.isRewardOpened(reward) ? h.scrollTo() : Function.prototype
         }, [
-            reward.minimum_value >= 100 ? m('.tag-circle-installment', [
-                m('.fontsize-smallest.fontweight-semibold.lineheight-tightest', '33x'),
-                m('.fontsize-mini.lineheight-tightest', 's/ juros')
-            ]) : '',
+            // reward.minimum_value >= 100 ? m('.tag-circle-installment', [
+            //     m('.fontsize-smallest.fontweight-semibold.lineheight-tightest', '33x'),
+            //     m('.fontsize-mini.lineheight-tightest', 's/ juros')
+            // ]) : '',
             m('.u-marginbottom-20', [
-                m('.fontsize-base.fontweight-semibold', `For Rs ${h.formatNumber(reward.minimum_value)} or more`),
+                m('.fontsize-base.fontweight-semibold', `For Rs ${h.formatNumber(reward.minimum_value)}`),
             ]),
             m('.fontsize-smaller.fontweight-semibold',
                     reward.title
@@ -125,7 +125,7 @@ const projectRewardCard = {
             ctrl.isLongDescription() && ctrl.isRewardOpened() ? m('a[href="javascript:void(0);"].alt-link.fontsize-smallest.gray.link-more.u-marginbottom-20', {
                 onclick: () => ctrl.toggleDescriptionExtended(reward.id)
             }, [
-                ctrl.isRewardDescriptionExtended() ? 'menos ' : 'mais ',
+                ctrl.isRewardDescriptionExtended() ? 'less ' : 'more ',
                 m('span.fa.fa-angle-down', {
                     class: ctrl.isRewardDescriptionExtended() ? 'reversed' : ''
                 })
@@ -190,23 +190,23 @@ const projectRewardCard = {
                                 )
                             )
                         ]) : '',
-                        m('.fontcolor-secondary.u-marginbottom-10',
-                            'Value of support'
-                        ),
-                        m('.w-row.u-marginbottom-20', [
-                            m('.w-col.w-col-3.w-col-small-3.w-col-tiny-3',
-                                m('.back-reward-input-reward.placeholder',
-                                    'Rs'
-                                )
-                            ),
-                            m('.w-col.w-col-9.w-col-small-9.w-col-tiny-9',
-                                m('input.w-input.back-reward-input-reward[type="tel"]', {
-                                    config: ctrl.setInput,
-                                    onkeyup: m.withAttr('value', ctrl.applyMask),
-                                    value: ctrl.contributionValue()
-                                })
-                            )
-                        ]),
+                        // m('.fontcolor-secondary.u-marginbottom-10',
+                        //     'Value of support'
+                        // ),
+                        // m('.w-row.u-marginbottom-20', [
+                        //     m('.w-col.w-col-3.w-col-small-3.w-col-tiny-3',
+                        //         m('.back-reward-input-reward.placeholder',
+                        //             'Rs'
+                        //         )
+                        //     ),
+                        //     m('.w-col.w-col-9.w-col-small-9.w-col-tiny-9',
+                        //         m('input.w-input.back-reward-input-reward[type="tel"]', {
+                        //             config: ctrl.setInput,
+                        //             onkeyup: m.withAttr('value', ctrl.applyMask),
+                        //             value: ctrl.contributionValue()
+                        //         })
+                        //     )
+                        // ]),
                         m('input.w-button.btn.btn-medium[type="submit"][value="Continue >"]'),
                         ctrl.error().length > 0 ? m('.text-error', [
                             m('br'),

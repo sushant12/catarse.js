@@ -45,6 +45,7 @@ const userSettings = {
             countriesLoader = postgrest.loader(models.country.getPageOptions()),
             statesLoader = postgrest.loader(models.state.getPageOptions()),
             phoneMask = _.partial(h.mask, '(99) 9999-99999'),
+            // phoneMask = _.partial(h.mask, '9999999999'),
             documentMask = _.partial(h.mask, '999.999.999-99'),
             documentCompanyMask = _.partial(h.mask, '99.999.999/9999-99'),
             zipcodeMask = _.partial(h.mask, '99999-999'),
@@ -65,7 +66,8 @@ const userSettings = {
             },
             updateUserData = () => {
                 const userData = {
-                    country_id: fields.country_id(),
+                    // country_id: fields.country_id(),
+                    country_id: 168,
                     address_street: fields.street(),
                     address_number: fields.number(),
                     address_city: fields.city(),
@@ -192,34 +194,34 @@ const userSettings = {
                         m('.w-col.w-col-10.w-col-push-1',
                             // ( _.isEmpty(fields.name()) && _.isEmpty(fields.owner_document()) ? '' : m(UserOwnerBox, {user: user}) ),
                             m('.w-form.card.card-terciary', [
-                                m('.fontsize-base.fontweight-semibold',
-                                  I18n.t('legal_title', I18nScope())
-                                ),
-                                m('.fontsize-small.u-marginbottom-20', [
-                                    m.trust(I18n.t('legal_subtitle', I18nScope()))
-                                ]),
-                                m('.divider.u-marginbottom-20'),
-                                m('.w-row', [
-                                    m('.w-col.w-col-6.w-sub-col',
-                                        m('.input.select.required.user_bank_account_bank_id', [
-                                            m(`select.select.required.w-input.text-field.bank-select.positive${(disableFields ? '.text-field-disabled' : '')}[id='user_bank_account_attributes_bank_id']`, {
-                                                name: 'user[bank_account_attributes][bank_id]',
-                                                onchange: m.withAttr('value', fields.account_type),
-                                                disabled: disableFields
-                                            }, [
-                                                m('option[value=\'pf\']', {
-                                                    selected: fields.account_type() === 'pf'
-                                                }, I18n.t('account_types.pf', I18nScope())),
-                                                m('option[value=\'pj\']', {
-                                                    selected: fields.account_type() === 'pj'
-                                                }, I18n.t('account_types.pj', I18nScope())),
-                                                m('option[value=\'mei\']', {
-                                                    selected: fields.account_type() === 'mei'
-                                                }, I18n.t('account_types.mei', I18nScope())),
-                                            ])
-                                        ])
-                                    ),
-                                ]),
+                                // m('.fontsize-base.fontweight-semibold',
+                                //   I18n.t('legal_title', I18nScope())
+                                // ),
+                                // m('.fontsize-small.u-marginbottom-20', [
+                                //     m.trust(I18n.t('legal_subtitle', I18nScope()))
+                                // ]),
+                                // m('.divider.u-marginbottom-20'),
+                                // m('.w-row', [
+                                //     m('.w-col.w-col-6.w-sub-col',
+                                //         m('.input.select.required.user_bank_account_bank_id', [
+                                //             m(`select.select.required.w-input.text-field.bank-select.positive${(disableFields ? '.text-field-disabled' : '')}[id='user_bank_account_attributes_bank_id']`, {
+                                //                 name: 'user[bank_account_attributes][bank_id]',
+                                //                 onchange: m.withAttr('value', fields.account_type),
+                                //                 disabled: disableFields
+                                //             }, [
+                                //                 m('option[value=\'pf\']', {
+                                //                     selected: fields.account_type() === 'pf'
+                                //                 }, I18n.t('account_types.pf', I18nScope())),
+                                //                 m('option[value=\'pj\']', {
+                                //                     selected: fields.account_type() === 'pj'
+                                //                 }, I18n.t('account_types.pj', I18nScope())),
+                                //                 m('option[value=\'mei\']', {
+                                //                     selected: fields.account_type() === 'mei'
+                                //                 }, I18n.t('account_types.mei', I18nScope())),
+                                //             ])
+                                //         ])
+                                //     ),
+                                // ]),
                                 m('.w-row', [
                                     m('.w-col.w-col-6.w-sub-col', [
                                         m('label.text.required.field-label.field-label.fontweight-semibold.force-text-dark[for=\'user_bank_account_attributes_owner_name\']',
@@ -260,6 +262,7 @@ const userSettings = {
                                                 m(`input.string.tel.required.w-input.text-field.positive${((disableFields && !_.isEmpty(user.birth_date)) ? '.text-field-disabled' : '')}[data-validate-cpf-cnpj='true'][id='user_bank_account_attributes_owner_document'][type='tel'][validation_text='true']`, {
                                                     value: fields.birth_date(),
                                                     name: 'user[birth_date]',
+                                                    placeholder: 'd/m/y',
                                                     class: ctrl.parsedErrors.hasError('birth_date') ? 'error' : false,
                                                     disabled: (disableFields && !_.isEmpty(user.birth_date)),
                                                     onchange: m.withAttr('value', ctrl.applyBirthDateMask),
@@ -289,28 +292,28 @@ const userSettings = {
                                 m('.fontsize-small.u-marginbottom-20.u-marginbottom-20', [
                                     I18n.t('address_subtitle', I18nScope())
                                 ]),
-                                m('.w-row', [
-                                    m('.input.select.optional.user_country.w-col.w-col-6.w-sub-col', [
-                                        m('label.field-label',
-                                          I18n.t('label_country', I18nScope())
-                                        ),
-                                        m('select.select.optional.w-input.text-field.w-select.positive[id=\'user_country_id\'][name=\'user[country_id]\']', {
-                                            onchange: m.withAttr('value', fields.country_id),
-                                            class: ctrl.parsedErrors.hasError('country_id') ? 'error' : false
-                                        }, [
-                                            m('option[value=\'\']'),
-                                            (!_.isEmpty(ctrl.countries()) ?
-                                                _.map(ctrl.countries(), country => m(`option${country.id == fields.country_id() ? '[selected="selected"]' : ''}`, {
-                                                    value: country.id
-                                                },
-                                                    country.name_en
-                                                )) :
-                                                '')
-                                        ]),
-                                        ctrl.parsedErrors.inlineError('country_id')
-                                    ]),
-                                    m('.w-col.w-col-6')
-                                ]),
+                                // m('.w-row', [
+                                //     m('.input.select.optional.user_country.w-col.w-col-6.w-sub-col', [
+                                //         m('label.field-label',
+                                //           I18n.t('label_country', I18nScope())
+                                //         ),
+                                //         m('select.select.optional.w-input.text-field.w-select.positive[id=\'user_country_id\'][name=\'user[country_id]\']', {
+                                //             onchange: m.withAttr('value', fields.country_id),
+                                //             class: ctrl.parsedErrors.hasError('country_id') ? 'error' : false
+                                //         }, [
+                                //             m('option[value=\'\']'),
+                                //             (!_.isEmpty(ctrl.countries()) ?
+                                //                 _.map(ctrl.countries(), country => m(`option${country.id == fields.country_id() ? '[selected="selected"]' : ''}`, {
+                                //                     value: country.id
+                                //                 },
+                                //                     country.name_en
+                                //                 )) :
+                                //                 '')
+                                //         ]),
+                                //         ctrl.parsedErrors.inlineError('country_id')
+                                //     ]),
+                                //     m('.w-col.w-col-6')
+                                // ]),
                                 m('.w-row', [
                                     m('.input.string.optional.user_address_street.w-col.w-col-6.w-sub-col', [
                                         m('label.field-label',
@@ -323,48 +326,9 @@ const userSettings = {
                                         }),
                                         ctrl.parsedErrors.inlineError('street')
                                     ]),
-                                    m('.w-col.w-col-6',
-                                        m('.w-row', [
-                                            m('.input.tel.optional.user_address_number.w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle', [
-                                                m('label.field-label',
-                                                  I18n.t('label_address_number', I18nScope())
-                                                ),
-                                                m('input.string.tel.optional.w-input.text-field.w-input.text-field.positive[id=\'user_address_number\'][name=\'user[address_number]\'][type=\'tel\']', {
-                                                    value: fields.number(),
-                                                    class: ctrl.parsedErrors.hasError('number') ? 'error' : false,
-                                                    onchange: m.withAttr('value', fields.number)
-                                                }),
-                                                ctrl.parsedErrors.inlineError('number')
-                                            ]),
-                                            m('.input.string.optional.user_address_complement.w-col.w-col-6.w-col-small-6.w-col-tiny-6', [
-                                                m('label.field-label',
-                                                  I18n.t('label_address_complement', I18nScope())
-                                                ),
-                                                m('input.string.optional.w-input.text-field.w-input.text-field.positive[id=\'user_address_complement\'][name=\'user[address_complement]\'][type=\'text\']', {
-                                                    value: fields.complement(),
-                                                    class: ctrl.parsedErrors.hasError('complement') ? 'error' : false,
-                                                    onchange: m.withAttr('value', fields.complement)
-                                                }),
-                                                ctrl.parsedErrors.inlineError('complement')
-                                            ])
-                                        ])
-                                    )
-                                ]),
-                                m('.w-row', [
-                                    m('.input.string.optional.user_address_neighbourhood.w-col.w-col-6.w-sub-col', [
-                                        m('label.field-label',
-                                          I18n.t('label_address_neighbourhood', I18nScope())
-                                        ),
-                                        m('input.string.optional.w-input.text-field.w-input.text-field.positive[id=\'user_address_neighbourhood\'][name=\'user[address_neighbourhood]\'][type=\'text\']', {
-                                            value: fields.neighbourhood(),
-                                            class: ctrl.parsedErrors.hasError('neighbourhood') ? 'error' : false,
-                                            onchange: m.withAttr('value', fields.neighbourhood)
-                                        }),
-                                        ctrl.parsedErrors.inlineError('neighbourhood')
-                                    ]),
                                     m('.input.string.optional.user_address_city.w-col.w-col-6', [
                                         m('label.field-label',
-                                          I18n.t('label_address_city', I18nScope())
+                                            I18n.t('label_address_city', I18nScope())
                                         ),
                                         m('input.string.optional.w-input.text-field.w-input.text-field.positive[data-required-in-brazil=\'true\'][id=\'user_address_city\'][name=\'user[address_city]\'][type=\'text\']', {
                                             value: fields.city(),
@@ -373,120 +337,180 @@ const userSettings = {
                                         }),
                                         ctrl.parsedErrors.inlineError('city')
                                     ])
+                                    // m('.w-col.w-col-6',
+                                        // m('.w-row', [
+                                            // m('.input.tel.optional.user_address_number.w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle', [
+                                            //     m('label.field-label',
+                                            //       I18n.t('label_address_number', I18nScope())
+                                            //     ),
+                                            //     m('input.string.tel.optional.w-input.text-field.w-input.text-field.positive[id=\'user_address_number\'][name=\'user[address_number]\'][type=\'tel\']', {
+                                            //         value: fields.number(),
+                                            //         class: ctrl.parsedErrors.hasError('number') ? 'error' : false,
+                                            //         onchange: m.withAttr('value', fields.number)
+                                            //     }),
+                                            //     ctrl.parsedErrors.inlineError('number')
+                                            // ]),
+                                            // m('.input.string.optional.user_address_complement.w-col.w-col-6.w-col-small-6.w-col-tiny-6', [
+                                            //     m('label.field-label',
+                                            //       I18n.t('label_address_complement', I18nScope())
+                                            //     ),
+                                            //     m('input.string.optional.w-input.text-field.w-input.text-field.positive[id=\'user_address_complement\'][name=\'user[address_complement]\'][type=\'text\']', {
+                                            //         value: fields.complement(),
+                                            //         class: ctrl.parsedErrors.hasError('complement') ? 'error' : false,
+                                            //         onchange: m.withAttr('value', fields.complement)
+                                            //     }),
+                                            //     ctrl.parsedErrors.inlineError('complement')
+                                            // ])
+                                        // ])
+                                    // )
                                 ]),
+                                // m('.w-row', [
+                                //     m('.input.string.optional.user_address_neighbourhood.w-col.w-col-6.w-sub-col', [
+                                //         m('label.field-label',
+                                //           I18n.t('label_address_neighbourhood', I18nScope())
+                                //         ),
+                                //         m('input.string.optional.w-input.text-field.w-input.text-field.positive[id=\'user_address_neighbourhood\'][name=\'user[address_neighbourhood]\'][type=\'text\']', {
+                                //             value: fields.neighbourhood(),
+                                //             class: ctrl.parsedErrors.hasError('neighbourhood') ? 'error' : false,
+                                //             onchange: m.withAttr('value', fields.neighbourhood)
+                                //         }),
+                                //         ctrl.parsedErrors.inlineError('neighbourhood')
+                                //     ]),
+                                //     m('.input.string.optional.user_address_city.w-col.w-col-6', [
+                                //         m('label.field-label',
+                                //           I18n.t('label_address_city', I18nScope())
+                                //         ),
+                                //         m('input.string.optional.w-input.text-field.w-input.text-field.positive[data-required-in-brazil=\'true\'][id=\'user_address_city\'][name=\'user[address_city]\'][type=\'text\']', {
+                                //             value: fields.city(),
+                                //             class: ctrl.parsedErrors.hasError('city') ? 'error' : false,
+                                //             onchange: m.withAttr('value', fields.city)
+                                //         }),
+                                //         ctrl.parsedErrors.inlineError('city')
+                                //     ])
+                                // ]),
                                 m('.w-row', [
-                                    m('.input.select.optional.user_address_state.w-col.w-col-6.w-sub-col', [
+                                    // m('.input.select.optional.user_address_state.w-col.w-col-6.w-sub-col', [
+                                    //     m('label.field-label',
+                                    //       I18n.t('label_address_state', I18nScope())
+                                    //     ),
+                                    //     m('select.select.optional.w-input.text-field.w-select.text-field.positive[data-required-in-brazil=\'true\'][id=\'user_address_state\'][name=\'user[address_state]\']', {
+                                    //         class: ctrl.parsedErrors.hasError('state') ? 'error' : false,
+                                    //         onchange: m.withAttr('value', fields.state)
+                                    //     }, [
+                                    //         m('option[value=\'\']'),
+                                    //         (!_.isEmpty(ctrl.states()) ?
+                                    //             _.map(ctrl.states(), state => m(`option[value='${state.acronym}']${state.acronym == fields.state() ? '[selected="selected"]' : ''}`, {
+                                    //                 value: state.acronym
+                                    //             },
+                                    //                 state.name
+                                    //             ))
+                                    //
+                                    //             :
+                                    //             ''),
+                                    //         m('option[value=\'outro / other\']',
+                                    //           I18n.t('label_other_option', I18nScope())
+                                    //         )
+                                    //     ]),
+                                    //     ctrl.parsedErrors.inlineError('state')
+                                    // ]),
+                                    m('.input.tel.optional.user_phone_number.w-col.w-col-6.w-col-small-6.w-col-tiny-6', [
                                         m('label.field-label',
-                                          I18n.t('label_address_state', I18nScope())
+                                            I18n.t('label_address_phone', I18nScope())
                                         ),
-                                        m('select.select.optional.w-input.text-field.w-select.text-field.positive[data-required-in-brazil=\'true\'][id=\'user_address_state\'][name=\'user[address_state]\']', {
-                                            class: ctrl.parsedErrors.hasError('state') ? 'error' : false,
-                                            onchange: m.withAttr('value', fields.state)
-                                        }, [
-                                            m('option[value=\'\']'),
-                                            (!_.isEmpty(ctrl.states()) ?
-                                                _.map(ctrl.states(), state => m(`option[value='${state.acronym}']${state.acronym == fields.state() ? '[selected="selected"]' : ''}`, {
-                                                    value: state.acronym
-                                                },
-                                                    state.name
-                                                ))
-
-                                                :
-                                                ''),
-                                            m('option[value=\'outro / other\']',
-                                              I18n.t('label_other_option', I18nScope())
-                                            )
-                                        ]),
-                                        ctrl.parsedErrors.inlineError('state')
-                                    ]),
-                                    m('.w-col.w-col-6',
-                                        m('.w-row', [
-                                            m('.input.tel.optional.user_address_zip_code.w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle', [
-                                                m('label.field-label',
-                                                  I18n.t('label_address_zipcode', I18nScope())
-                                                ),
-                                                m('input.string.tel.optional.w-input.text-field.w-input.text-field.positive[data-fixed-mask=\'99999-999\'][data-required-in-brazil=\'true\'][id=\'user_address_zip_code\'][name=\'user[address_zip_code]\'][type=\'tel\']', {
-                                                    value: fields.zipcode(),
-                                                    class: ctrl.parsedErrors.hasError('zipcode') ? 'error' : false,
-                                                    onchange: m.withAttr('value', fields.zipcode)
-                                                }),
-                                                ctrl.parsedErrors.inlineError('zipcode')
-                                            ]),
-                                            m('.input.tel.optional.user_phone_number.w-col.w-col-6.w-col-small-6.w-col-tiny-6', [
-                                                m('label.field-label',
-                                                  I18n.t('label_address_phone', I18nScope())
-                                                ),
-                                                m('input.string.tel.optional.w-input.text-field.w-input.text-field.positive[data-fixed-mask=\'(99) 9999-99999\'][data-required-in-brazil=\'true\'][id=\'user_phone_number\'][name=\'user[phone_number]\'][type=\'tel\']', {
-                                                    value: fields.phonenumber(),
-                                                    onchange: m.withAttr('value', fields.phonenumber),
-                                                    class: ctrl.parsedErrors.hasError('phonenumber') ? 'error' : false,
-                                                    onkeyup: m.withAttr('value', value => ctrl.applyPhoneMask(value))
-                                                }),
-                                                ctrl.parsedErrors.inlineError('phonenumber')
-                                            ])
-                                        ])
-                                    )
+                                        m('input.string.tel.optional.w-input.text-field.w-input.text-field.positive[id=\'user_phone_number\'][name=\'user[phone_number]\'][type=\'tel\']', {
+                                            value: fields.phonenumber(),
+                                            onchange: m.withAttr('value', fields.phonenumber),
+                                            class: ctrl.parsedErrors.hasError('phonenumber') ? 'error' : false,
+                                            onkeyup: m.withAttr('value', value => ctrl.applyPhoneMask(value))
+                                        }),
+                                        ctrl.parsedErrors.inlineError('phonenumber')
+                                    ])
+                                    // m('.w-col.w-col-6',
+                                    //     m('.w-row', [
+                                    //         m('.input.tel.optional.user_address_zip_code.w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle', [
+                                    //             m('label.field-label',
+                                    //               I18n.t('label_address_zipcode', I18nScope())
+                                    //             ),
+                                    //             m('input.string.tel.optional.w-input.text-field.w-input.text-field.positive[data-fixed-mask=\'99999-999\'][data-required-in-brazil=\'true\'][id=\'user_address_zip_code\'][name=\'user[address_zip_code]\'][type=\'tel\']', {
+                                    //                 value: fields.zipcode(),
+                                    //                 class: ctrl.parsedErrors.hasError('zipcode') ? 'error' : false,
+                                    //                 onchange: m.withAttr('value', fields.zipcode)
+                                    //             }),
+                                    //             ctrl.parsedErrors.inlineError('zipcode')
+                                    //         ]),
+                                    //         m('.input.tel.optional.user_phone_number.w-col.w-col-6.w-col-small-6.w-col-tiny-6', [
+                                    //             m('label.field-label',
+                                    //               I18n.t('label_address_phone', I18nScope())
+                                    //             ),
+                                    //             m('input.string.tel.optional.w-input.text-field.w-input.text-field.positive[data-fixed-mask=\'(99) 9999-99999\'][data-required-in-brazil=\'true\'][id=\'user_phone_number\'][name=\'user[phone_number]\'][type=\'tel\']', {
+                                    //                 value: fields.phonenumber(),
+                                    //                 onchange: m.withAttr('value', fields.phonenumber),
+                                    //                 class: ctrl.parsedErrors.hasError('phonenumber') ? 'error' : false,
+                                    //                 onkeyup: m.withAttr('value', value => ctrl.applyPhoneMask(value))
+                                    //             }),
+                                    //             ctrl.parsedErrors.inlineError('phonenumber')
+                                    //         ])
+                                    //     ])
+                                    // )
                                 ]),
-                            ]),
-                            (args.hideCreditCards ? '' : m('.w-form.card.card-terciary.u-marginbottom-20', [
-                                m('.fontsize-base.fontweight-semibold',
-                                  I18n.t('credit_cards.title', I18nScope())
-                                ),
-                                m('.fontsize-small.u-marginbottom-20',
-                                  m.trust(
-                                      I18n.t('credit_cards.subtitle', I18nScope())
-                                  )
-                                ),
-                                m('.divider.u-marginbottom-20'),
-                                m('.w-row.w-hidden-tiny.card', [
-                                    m('.w-col.w-col-5.w-col-small-5',
-                                        m('.fontsize-small.fontweight-semibold',
-                                          I18n.t('credit_cards.card_label', I18nScope())
-                                        )
-                                    ),
-                                    m('.w-col.w-col-5.w-col-small-5',
-                                        m('.fontweight-semibold.fontsize-small',
-                                          I18n.t('credit_cards.provider_label', I18nScope())
-                                        )
-                                    ),
-                                    m('.w-col.w-col-2.w-col-small-2')
-                                ]),
-
-                                (_.map(ctrl.creditCards(), card => m('.w-row.card', [
-                                    m('.w-col.w-col-5.w-col-small-5',
-                                        m('.fontsize-small.fontweight-semibold', [
-                                            'XXXX XXXX XXXX',
-                                            m.trust('&nbsp;'),
-                                            card.last_digits
-                                        ])
-                                    ),
-                                    m('.w-col.w-col-5.w-col-small-5',
-                                        m('.fontsize-small.fontweight-semibold.u-marginbottom-10',
-                                            card.card_brand.toUpperCase()
-                                        )
-                                    ),
-                                    m('.w-col.w-col-2.w-col-small-2',
-                                        m('a.btn.btn-terciary.btn-small[rel=\'nofollow\']', {
-                                            onclick: ctrl.deleteCard(card.id)
-                                        },
-                                          I18n.t('credit_cards.remove_label', I18nScope())
-                                        )
-                                    )
-                                ]))),
-                                m('form.w-hidden', {
-                                    action: `/en/users/${user.id}/credit_cards/${ctrl.toDeleteCard()}`,
-                                    method: 'POST',
-                                    config: ctrl.setCardDeletionForm
-                                }, [
-                                    m('input[name=\'utf8\'][type=\'hidden\'][value=\'✓\']'),
-                                    m('input[name=\'_method\'][type=\'hidden\'][value=\'delete\']'),
-                                    m(`input[name='authenticity_token'][type='hidden'][value='${h.authenticityToken()}']`),
-                                ])
-                            ])),
+                            ])
+                            // (args.hideCreditCards ? '' : m('.w-form.card.card-terciary.u-marginbottom-20', [
+                            //     m('.fontsize-base.fontweight-semibold',
+                            //       I18n.t('credit_cards.title', I18nScope())
+                            //     ),
+                            //     m('.fontsize-small.u-marginbottom-20',
+                            //       m.trust(
+                            //           I18n.t('credit_cards.subtitle', I18nScope())
+                            //       )
+                            //     ),
+                            //     m('.divider.u-marginbottom-20'),
+                            //     m('.w-row.w-hidden-tiny.card', [
+                            //         m('.w-col.w-col-5.w-col-small-5',
+                            //             m('.fontsize-small.fontweight-semibold',
+                            //               I18n.t('credit_cards.card_label', I18nScope())
+                            //             )
+                            //         ),
+                            //         m('.w-col.w-col-5.w-col-small-5',
+                            //             m('.fontweight-semibold.fontsize-small',
+                            //               I18n.t('credit_cards.provider_label', I18nScope())
+                            //             )
+                            //         ),
+                            //         m('.w-col.w-col-2.w-col-small-2')
+                            //     ]),
+                            //
+                            //     (_.map(ctrl.creditCards(), card => m('.w-row.card', [
+                            //         m('.w-col.w-col-5.w-col-small-5',
+                            //             m('.fontsize-small.fontweight-semibold', [
+                            //                 'XXXX XXXX XXXX',
+                            //                 m.trust('&nbsp;'),
+                            //                 card.last_digits
+                            //             ])
+                            //         ),
+                            //         m('.w-col.w-col-5.w-col-small-5',
+                            //             m('.fontsize-small.fontweight-semibold.u-marginbottom-10',
+                            //                 card.card_brand.toUpperCase()
+                            //             )
+                            //         ),
+                            //         m('.w-col.w-col-2.w-col-small-2',
+                            //             m('a.btn.btn-terciary.btn-small[rel=\'nofollow\']', {
+                            //                 onclick: ctrl.deleteCard(card.id)
+                            //             },
+                            //               I18n.t('credit_cards.remove_label', I18nScope())
+                            //             )
+                            //         )
+                            //     ]))),
+                            //     m('form.w-hidden', {
+                            //         action: `/en/users/${user.id}/credit_cards/${ctrl.toDeleteCard()}`,
+                            //         method: 'POST',
+                            //         config: ctrl.setCardDeletionForm
+                            //     }, [
+                            //         m('input[name=\'utf8\'][type=\'hidden\'][value=\'✓\']'),
+                            //         m('input[name=\'_method\'][type=\'hidden\'][value=\'delete\']'),
+                            //         m(`input[name='authenticity_token'][type='hidden'][value='${h.authenticityToken()}']`),
+                            //     ])
+                            // ])),
                         )
                     ),
-
-
                     m(projectEditSaveBtn, {
                         loading: ctrl.loading,
                         onSubmit: ctrl.onSubmit

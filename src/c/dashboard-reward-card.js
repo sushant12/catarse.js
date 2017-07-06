@@ -91,7 +91,7 @@ const dashboardRewardCard = {
                     ) : ''),
 
                 (reward.deliver_at ? m('.fontsize-smallest', [m('b', I18n.t('delivery_estimation', I18nScope())), h.momentify(reward.deliver_at, 'MMM/YYYY')]) : ''),
-                m('.fontsize-smallest', m('b', `${I18n.t('delivery', I18nScope())}: `), I18n.t(`shipping_options.${reward.shipping_options}`, I18nScope())),
+                // m('.fontsize-smallest', m('b', `${I18n.t('delivery', I18nScope())}: `), I18n.t(`shipping_options.${reward.shipping_options}`, I18nScope())),
                 m('.u-margintop-40.w-row', [
                     m('.w-col.w-col-6', [
                         m('.w-checkbox', [
@@ -101,7 +101,7 @@ const dashboardRewardCard = {
                                     )
                         ]),
                         m(`div${reward.limited() ? '' : '.w-hidden'}`,
-                          m(`input.string.tel.optional.w-input.text-field.u-marginbottom-30.positive[placeholder='Quantidade disponível'][type='tel'][id='project_rewards_attributes_${index}_maximum_contributions']`, {
+                          m(`input.string.tel.optional.w-input.text-field.u-marginbottom-30.positive[placeholder='Available Quantity'][type='tel'][id='project_rewards_attributes_${index}_maximum_contributions']`, {
                               name: `project[rewards_attributes][${index}][maximum_contributions]`,
                               class: ctrl.limitError() ? 'error' : false,
                               value: ctrl.maximumContributions(),
@@ -110,7 +110,7 @@ const dashboardRewardCard = {
                     ]),
                     m('.w-col.w-col-6')
                 ]),
-                ctrl.limitError() ? m(inlineError, { message: 'Limite deve ser maior que quantidade de apoios.' }) : '', ,
+                ctrl.limitError() ? m(inlineError, { message: 'Limit must be greater than amount of supports.' }) : '', ,
             ]),
             m('.u-margintop-20', [
                 m('.fontcolor-secondary.fontsize-smallest.fontweight-semibold',
