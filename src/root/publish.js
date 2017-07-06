@@ -166,7 +166,7 @@ const publish = {
                           ' ',
                           m('span.fontweight-semibold', 'All or Nothing (AON) rules')
                       ]),
-                      m('div', ['You chose the AON campaign. In this way, you will only receive the funds collected ', m('span.fontweight-semibold', 'ff it reaches or exceeds the collection goal'), '. Otherwise, all of your supporters will be reimbursed. You will be responsible for delivering the rewards offered if your campaig reaches the collection goal.'])
+                      m('div', ['You chose the AON campaign. In this mode, you will only receive the funds collected ', m('span.fontweight-semibold', 'if it reaches or exceeds the collection goal'), '. Otherwise, all of your supporters will be refunded. You will be responsible for delivering the rewards offered if your campaign reaches the collection goal.'])
                   ]),
 
                   m('.w-col.w-col-11', [
@@ -185,9 +185,7 @@ const publish = {
                           m('span', { style: { 'font-weight': ' 600' } }, 'Rates')
                       ]),
                       m('div', [
-                          'We charge 5%',
-                          m('span.fontweight-semibold', 'Total amount collected'),
-                          ' for your campaign if it reaches or exceeds the target within the campaign deadline. If the campaign does not reach the goal, no fee will be charged.',
+                          'We charge 5% of total amount collected for your campaign if it reaches or exceeds the target within the campaign deadline. If the campaign does not reach the goal, no fee will be charged.',
                           m('span.fontweight-semibold')
                       ])
                   ]),
@@ -207,7 +205,7 @@ const publish = {
                           ' ',
                           m('span', { style: { 'font-weight': ' 600' } }, 'Transfer and refund rules'),
                           m('div', [
-                              m.trust('When the deadline for your campaign comes to an end, you should verify your bank details. You may change the Bank, Account and the Agency <strong>Only if the new registered account is owned by you</strong>. After this confirmation, Grasruts will deposit the amount collected, already discounted the fee, into your account in 10 business days. If the project does not reach 100% of the target by the deadline, the Grasruts will reimburse the supporters. <a href="http://suporte.catarse.me/hc/pt-br/articles/202365507" target="blank">Learn more about the repayment process</a>')
+                              m.trust('When the deadline for your campaign comes to an end, you should verify your bank details. After this confirmation, Grasruts will deposit the amount collected with discounting the Grasruts fee, into your account in 10 business days. If the project does not reach 100% of the target by the deadline, then Grasruts will reimburse the supporters.')
                           ])
                       ]),
                       m('div', '')
