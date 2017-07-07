@@ -401,7 +401,7 @@ const projectsPayment = {
                                             onfocus: ctrl.vm.resetFieldError('phone'),
                                             class: ctrl.fieldHasError('phone') ? 'error' : false,
                                             type: 'tel',
-                                            onkeyup: m.withAttr('value', ctrl.applyPhoneMask),
+                                            // onkeyup: m.withAttr('value', ctrl.applyPhoneMask),
                                             value: ctrl.vm.fields.phone()
                                         }),
                                         ctrl.fieldHasError('phone')
@@ -511,4 +511,4 @@ const projectsPayment = {
     }
 };
 
-export default projectsPayment;
+export default projectsPayment; 

@@ -13189,7 +13189,7 @@ var projectsPayment = {
             onfocus: ctrl.vm.resetFieldError('phone'),
             class: ctrl.fieldHasError('phone') ? 'error' : false,
             type: 'tel',
-            onkeyup: m.withAttr('value', ctrl.applyPhoneMask),
+            // onkeyup: m.withAttr('value', ctrl.applyPhoneMask),
             value: ctrl.vm.fields.phone()
         }), ctrl.fieldHasError('phone')])]) : ''])), m('.w-row.u-marginbottom-40', !ctrl.showPaymentForm() ? m('.w-col.w-col-push-3.w-col-6', m('button.btn.btn-large', {
             onclick: function onclick() {
