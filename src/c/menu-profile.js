@@ -110,22 +110,17 @@ const menuProfile = {
                                                         'Public Profile'
                                                     )
                                                 ),
-                                                m('li.lineheight-looser',
-                                                    m(`a.alt-link.fontsize-smaller[href='/en/users/${user.id}/edit#settings']`,
-                                                        'Settings'
-                                                    )
-                                                )
 //                                                 m('li.lineheight-looser',
 //                                                     m(`a.alt-link.fontsize-smaller[href='/en/users/${user.id}/edit#settings']`,
 //                                                         `Dados financeiros`
 // >>>>>>> upstream/master
 //                                                     )
 //                                                 )
-                                                // m('li.lineheight-looser',
-                                                //     m(`a.alt-link.fontsize-smaller[href='/en/users/${user.id}/edit#settings']`,
-                                                //         'Data and address'
-                                                //     )
-                                                // ),
+                                                m('li.lineheight-looser',
+                                                    m(`a.alt-link.fontsize-smaller[href='/en/users/${user.id}/edit#settings']`,
+                                                        'Data and address'
+                                                    )
+                                                ),
                                                 // m('li.lineheight-looser',
                                                 //     m(`a.alt-link.fontsize-smaller[href='/en/users/${user.id}/edit#billing']`,
                                                 //         'Banco e cartões'

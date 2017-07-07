@@ -3,7 +3,6 @@ import I18n from 'i18n-js';
 import h from '../h';
 
 const I18nScope = _.partial(h.i18nScope, 'pages.jobs');
-
 const jobs = {
     view(ctrl, args) {
         return m('.page-jobs', [

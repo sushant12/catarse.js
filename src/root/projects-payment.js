@@ -10,7 +10,7 @@ import usersVM from '../vms/user-vm';
 import faqBox from '../c/faq-box';
 import paymentForm from '../c/payment-form';
 import inlineError from '../c/inline-error';
-import UserOwnerBox from '../c/user-owner-box';
+// import UserOwnerBox from '../c/user-owner-box';
 
 const I18nScope = _.partial(h.i18nScope, 'projects.contributions.edit');
 const I18nIntScope = _.partial(h.i18nScope, 'projects.contributions.edit_international');
@@ -195,7 +195,7 @@ const projectsPayment = {
                                         I18n.t('required', ctrl.scope())
                                     )
                                 ]),
-                                user.name && user.owner_document ? m(UserOwnerBox, { user, project }) : '',
+                                // user.name && user.owner_document ? m(UserOwnerBox, { user, project }) : '',
                                 // m('.w-row.u-marginbottom-30', [
                                 //     m('.w-col.w-col-7.w-sub-col', [
                                 //         m('label.field-label.fontweight-semibold[for=\'country\']', [
@@ -233,7 +233,7 @@ const projectsPayment = {
                                         }),
                                         ctrl.fieldHasError('completeName')
                                     ]),
-                                    m('.w-col.w-col-5', (ctrl.vm.isInternational() ? '' : [
+                                    m('.w-col.w-col-5', (!ctrl.vm.isInternational() ? '' : [
                                         m('label.field-label.fontweight-semibold[for=\'document\']',
                                           'PAN'
                                          ),
@@ -241,7 +241,7 @@ const projectsPayment = {
                                             onfocus: ctrl.vm.resetFieldError('ownerDocument'),
                                             class: ctrl.fieldHasError('ownerDocument') ? 'error' : false,
                                             type: 'tel',
-                                            onkeyup: m.withAttr('value', ctrl.applyDocumentMask),
+                                            // onkeyup: m.withAttr('value', ctrl.applyDocumentMask),
                                             value: ctrl.vm.fields.ownerDocument()
                                         }),
                                         ctrl.fieldHasError('ownerDocument')
@@ -392,7 +392,7 @@ const projectsPayment = {
                                     //     ctrl.fieldHasError('userState')
                                     // ])
                                 ]),
-                                !ctrl.vm.isInternational() ? m('.w-row', [
+                                ctrl.vm.isInternational() ? m('.w-row', [
                                     m('.w-col.w-col-6', [
                                         m('label.field-label.fontweight-semibold[for=\'phone\']',
                                             I18n.t('fields.phone', ctrl.scope())

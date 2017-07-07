@@ -5,7 +5,7 @@ import _ from 'underscore';
 import models from '../models';
 import h from '../h';
 import popNotification from './pop-notification';
-import UserOwnerBox from './user-owner-box';
+// import UserOwnerBox from './user-owner-box';
 import inlineError from './inline-error';
 import projectEditSaveBtn from './project-edit-save-btn';
 import userSettingsVM from '../vms/user-settings-vm';
@@ -45,7 +45,6 @@ const userSettings = {
             countriesLoader = postgrest.loader(models.country.getPageOptions()),
             statesLoader = postgrest.loader(models.state.getPageOptions()),
             phoneMask = _.partial(h.mask, '(99) 9999-99999'),
-            // phoneMask = _.partial(h.mask, '9999999999'),
             documentMask = _.partial(h.mask, '999.999.999-99'),
             documentCompanyMask = _.partial(h.mask, '99.999.999/9999-99'),
             zipcodeMask = _.partial(h.mask, '99999-999'),
@@ -130,7 +129,8 @@ const userSettings = {
                 if (fields.account_type() != 'pf') {
                     fields.owner_document(documentCompanyMask(value));
                 } else {
-                    fields.owner_document(documentMask(value));
+                    // fields.owner_document(documentMask(value));
+                    fields.owner_document(value);
                 }
             },
             handleError = () => {
@@ -171,6 +171,7 @@ const userSettings = {
         };
     },
     view(ctrl, args) {
+        debugger
         let user = ctrl.user,
             fields = ctrl.fields,
             hasContributedOrPublished = (user.total_contributed_projects >= 1 || user.total_published_projects >= 1),
@@ -251,7 +252,7 @@ const userSettings = {
                                                     disabled: disableFields,
                                                     name: 'user[cpf]',
                                                     onchange: m.withAttr('value', ctrl.applyDocumentMask),
-                                                    onkeyup: m.withAttr('value', ctrl.applyDocumentMask)
+                                                    // onkeyup: m.withAttr('value', ctrl.applyDocumentMask)
                                                 }),
                                                 ctrl.parsedErrors.inlineError('owner_document')
                                             ]),
@@ -421,7 +422,7 @@ const userSettings = {
                                             value: fields.phonenumber(),
                                             onchange: m.withAttr('value', fields.phonenumber),
                                             class: ctrl.parsedErrors.hasError('phonenumber') ? 'error' : false,
-                                            onkeyup: m.withAttr('value', value => ctrl.applyPhoneMask(value))
+                                            // onkeyup: m.withAttr('value', value => ctrl.applyPhoneMask(value))
                                         }),
                                         ctrl.parsedErrors.inlineError('phonenumber')
                                     ])

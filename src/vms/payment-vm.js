@@ -171,10 +171,9 @@ const paymentVM = () => {
         fields.errors([]);
 
         // checkEmptyFields(['completeName', 'zipCode', 'street', 'userState', 'city', 'userCountryId']);
-        checkEmptyFields(['completeName', 'street', 'city', 'userCountryId']);
+        checkEmptyFields(['completeName', 'street', 'city', 'userCountryId','phone']);
 
         if (!isInternational()) {
-            debugger
             checkEmptyFields(['phone', 'number', 'neighbourhood', 'ownerDocument', 'userState']);
             checkUserState();
             checkDocument();
