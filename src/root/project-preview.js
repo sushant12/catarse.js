@@ -18,7 +18,7 @@ const projectPreview = {
                             m('.w-row.u-marginbottom-30', [
                                 m('.w-col.w-col-3'),
                                 m('.w-col.w-col-6',
-                                    m(`input.w-input.text-field[type='text'][value='https://www.grasruts.com/${args.project().permalink}']`)
+                                    m(`input.w-input.text-field[type='text'][value='http://www.grasruts.com/${args.project().permalink}']`)
                                 ),
                                 m('.w-col.w-col-3')
                             ])

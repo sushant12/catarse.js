@@ -111,22 +111,22 @@ const dashboardRewardCard = {
                     m('.w-col.w-col-6')
                 ]),
                 ctrl.limitError() ? m(inlineError, { message: 'Limit must be greater than amount of supports.' }) : '', ,
-            ]),
-            m('.u-margintop-20', [
-                m('.fontcolor-secondary.fontsize-smallest.fontweight-semibold',
-                    I18n.t('reward_link_label', I18nScope())
-                ),
-                m('.fontcolor-secondary.fontsize-smallest.u-marginbottom-10',
-                    I18n.t('reward_link_hint', I18nScope())
-                ),
-                m('.w-form',
-                    m('.w-col.w-col-6',
-                        m.component(copyTextInput, {
-                            value: `http://www.grasruts.com/projects/${args.project_id}/contributions/new?reward_id=${reward.id}`
-                        }),
-                    )
-                ),
-            ]),
+            ])
+            // m('.u-margintop-20', [
+            //     m('.fontcolor-secondary.fontsize-smallest.fontweight-semibold',
+            //         I18n.t('reward_link_label', I18nScope())
+            //     ),
+            //     m('.fontcolor-secondary.fontsize-smallest.u-marginbottom-10',
+            //         I18n.t('reward_link_hint', I18nScope())
+            //     ),
+            //     m('.w-form',
+            //         m('.w-col.w-col-6',
+            //             m.component(copyTextInput, {
+            //                 value: `http://www.grasruts.com/projects/${args.project_id}/contributions/new?reward_id=${reward.id}`
+            //             }),
+            //         )
+            //     ),
+            // ]),
         ]);
     }
 };

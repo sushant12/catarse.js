@@ -19,7 +19,7 @@ const projectShareBox = {
                 m('.fontsize-small.fontweight-semibold.u-marginbottom-30', 'Share this project')
             ]),
             m('.w-widget.w-widget-twitter.w-hidden-small.w-hidden-tiny.share-block', [
-                m(`iframe[allowtransparency="true"][width="120px"][height="22px"][frameborder="0"][scrolling="no"][src="//platform.twitter.com/widgets/tweet_button.8d007ddfc184e6776be76fe9e5e52d69.en.html#_=1442425984936&count=horizontal&dnt=false&id=twitter-widget-1&lang=en&original_referer=https%3A%2F%2Fwww.grasruts.com%2Fen%2F${args.project().permalink}&size=m&text=Check%20out%20the%20campaign%20${args.project().name}%20at%20%40grasruts&type=share&url=http%3A%2F%2Fwww.grasruts.com%2Fen%2F${args.project().permalink}%3Fref%3Dtwitter%26utm_source%3Dtwitter.com%26utm_medium%3Dsocial%26utm_campaign%3Dproject_share&via=grasruts"]`)
+                m(`iframe[allowtransparency="true"][width="120px"][height="22px"][frameborder="0"][scrolling="no"][src="//platform.twitter.com/widgets/tweet_button.8d007ddfc184e6776be76fe9e5e52d69.en.html#_=1442425984936&count=horizontal&dnt=false&id=twitter-widget-1&lang=en&original_referer=http%3A%2F%2Fwww.grasruts.com%2Fen%2F${args.project().permalink}&size=m&text=Check%20out%20the%20campaign%20${args.project().name}%20at%20%40grasruts&type=share&url=http%3A%2F%2Fwww.grasruts.com%2Fen%2F${args.project().permalink}%3Fref%3Dtwitter%26utm_source%3Dtwitter.com%26utm_medium%3Dsocial%26utm_campaign%3Dproject_share&via=grasruts"]`)
             ]),
             m('a.w-hidden-small.widget-embed.w-hidden-tiny.fontsize-small.link-hidden.fontcolor-secondary[href="js:void(0);"]', {
                 onclick: ctrl.displayEmbed.toggle
@@ -36,7 +36,7 @@ const projectShareBox = {
                 mobile: true,
                 url: `http://www.grasruts.com/${args.project().permalink}?ref=facebook&utm_source=facebook.com&utm_medium=social&utm_campaign=project_share`
             }) : '',
-            m(`a.w-hidden-main.w-hidden-medium.btn.btn-medium.btn-tweet.u-marginbottom-20[href="https://twitter.com/intent/tweet?text=I%20just%20supported%20the%20campaign%20${args.project().name}%20https://www.grasruts.com/${args.project().permalink}%3Fref%3Dtwitter%26utm_source%3Dtwitter.com%26utm_medium%3Dsocial%26utm_campaign%3Dproject_share"][target="_blank"]`, [
+            m(`a.w-hidden-main.w-hidden-medium.btn.btn-medium.btn-tweet.u-marginbottom-20[href="https://twitter.com/intent/tweet?text=I%20just%20supported%20the%20campaign%20${args.project().name}%20http://www.grasruts.com/${args.project().permalink}%3Fref%3Dtwitter%26utm_source%3Dtwitter.com%26utm_medium%3Dsocial%26utm_campaign%3Dproject_share"][target="_blank"]`, [
                 m('span.fa.fa-twitter'), ' Tweet'
             ])
             // m('a.w-hidden-main.w-hidden-medium.btn.btn-medium[data-action="share/whatsapp/share"]', {

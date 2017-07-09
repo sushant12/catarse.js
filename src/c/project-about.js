@@ -25,7 +25,7 @@ const projectAbout = {
                 config: h.UIHelper()
             }, [
                 m('p.fontsize-base', [
-                    m('strong', 'The project'),
+                    m('strong', 'The Campaign'),
                 ]),
                 m('.fontsize-base[itemprop="about"]', m.trust(h.selfOrEmpty(project.about_html, '...'))),
                 project.budget ? [
