@@ -7004,7 +7004,7 @@ var projectSidebar = {
                 act: 'contribution_button_click',
                 project: project()
             }, function () {
-                return h.navigateTo('/projects/' + project().project_id + '/contributions/new');
+                return h.navigateTo('/support');
             })
 
         }, I18n$1.t('submit', I18nScope$19()))]), m('.back-project-btn-row-right', m.component(projectReminder, {
