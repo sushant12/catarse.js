@@ -62,8 +62,31 @@ const projectsPayment = {
                         showSuccess.toggle();
                     }
                     railsErrorsVM.validatePublish();
-                })
-                return h.navigateTo('/support');
+                });
+                // console.log(projectVM.currentProject().project_id)
+                // debugger
+                var contributionData = {
+                    // anonymous: fields.anonymous(),
+                    country_id: 168,
+                    payer_name: vm.fields.completeName(),
+                    payer_document: vm.fields.ownerDocument(),
+                    address_street: vm.fields.street(),
+                    // address_number: fields.number(),
+                    // address_complement: fields.addressComplement(),
+                    // address_neighbourhood: fields.neighbourhood(),
+                    // address_zip_code: fields.zipCode(),
+                    address_city: vm.fields.city(),
+                    // address_state: fields.userState(),
+                    address_phone_number: vm.fields.phone(),
+                    // card_owner_document: creditCardFields.cardOwnerDocument()
+                };
+                return m.request({
+                    method: 'PUT',
+                    url: `/projects/${projectVM.currentProject().project_id}/contributions/${contribution().id}.json`,
+                    data: { contribution: contributionData },
+                    config: h.setCsrfToken
+                });
+                // return h.navigateTo('/support');
             }
         };
 
