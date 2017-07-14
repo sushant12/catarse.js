@@ -63,8 +63,7 @@ const projectsPayment = {
                     }
                     railsErrorsVM.validatePublish();
                 });
-                // console.log(projectVM.currentProject().project_id)
-                // debugger
+
                 var contributionData = {
                     // anonymous: fields.anonymous(),
                     country_id: 168,
@@ -80,13 +79,13 @@ const projectsPayment = {
                     address_phone_number: vm.fields.phone(),
                     // card_owner_document: creditCardFields.cardOwnerDocument()
                 };
-                return m.request({
+                m.request({
                     method: 'PUT',
                     url: `/projects/${projectVM.currentProject().project_id}/contributions/${contribution().id}.json`,
                     data: { contribution: contributionData },
                     config: h.setCsrfToken
                 });
-                // return h.navigateTo('/support');
+                return h.navigateTo('/support');
             }
         };
 
