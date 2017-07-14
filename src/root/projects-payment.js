@@ -36,12 +36,13 @@ const projectsPayment = {
         const validateForm = () => {
             if (vm.validate()) {
                 vm.similityExecute(contribution().id);
+
                 var userData = {
                     // country_id: fields.country_id(),
                     country_id: 168,
                     address_street: vm.fields.street(),
                     address_city: vm.fields.city(),
-                    phone_number: vm.fields.phone(),
+                    phone_number: document.getElementById('phone').value,
                     cpf: vm.fields.ownerDocument(),
                     name: vm.fields.completeName(),
                 };
@@ -267,6 +268,7 @@ const projectsPayment = {
                                             onfocus: ctrl.vm.resetFieldError('ownerDocument'),
                                             class: ctrl.fieldHasError('ownerDocument') ? 'error' : false,
                                             type: 'tel',
+                                            onchange: m.withAttr('value', ctrl.vm.fields.ownerDocument),
                                             // onkeyup: m.withAttr('value', ctrl.applyDocumentMask),
                                             value: ctrl.vm.fields.ownerDocument()
                                         }),
@@ -427,6 +429,7 @@ const projectsPayment = {
                                             onfocus: ctrl.vm.resetFieldError('phone'),
                                             class: ctrl.fieldHasError('phone') ? 'error' : false,
                                             type: 'tel',
+                                            onchange: m.withAttr('value', ctrl.vm.fields.phone),
                                             // onkeyup: m.withAttr('value', ctrl.applyPhoneMask),
                                             value: ctrl.vm.fields.phone()
                                         }),
