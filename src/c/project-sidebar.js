@@ -129,7 +129,7 @@ const projectSidebar = {
                                 cat: 'contribution_create',
                                 act: 'contribution_button_click',
                                 project: project()
-                            }, () => h.navigateTo(`/support`))
+                            }, () => h.navigateTo(`/projects/${project().project_id}/contributions/new`))
 
                         }, I18n.t('submit', I18nScope()))
                     ]),

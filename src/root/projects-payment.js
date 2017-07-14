@@ -36,7 +36,33 @@ const projectsPayment = {
         const validateForm = () => {
             if (vm.validate()) {
                 vm.similityExecute(contribution().id);
-                showPaymentForm(true);
+                var userData = {
+                    // country_id: fields.country_id(),
+                    country_id: 168,
+                    address_street: vm.fields.street(),
+                    address_city: vm.fields.city(),
+                    phone_number: vm.fields.phone(),
+                    cpf: vm.fields.ownerDocument(),
+                    name: vm.fields.completeName(),
+                };
+                m.request({
+                    method: 'PUT',
+                    url: `/users/${currentUserID}.json`,
+                    data: {
+                        user: userData
+                    },
+                    config: h.setCsrfToken
+                }).then(() => {
+                    if (parsedErrors) {
+                        parsedErrors.resetFieldErrors();
+                    }
+                    loading(false);
+                    if (!showSuccess()) {
+                        showSuccess.toggle();
+                    }
+                    railsErrorsVM.validatePublish();
+                })
+                return h.navigateTo('/support');
             }
         };
 
@@ -411,7 +437,7 @@ const projectsPayment = {
                         ),
                         m('.w-row.u-marginbottom-40',
                             !ctrl.showPaymentForm() ? m('.w-col.w-col-push-3.w-col-6',
-                                m('button.btn.btn-large', {
+                                m('button.btn.btn-large[type=submit]', {
                                     onclick: () => CatarseAnalytics.event({ cat: 'contribution_finish', act: 'contribution_next_click' }, ctrl.validateForm)
                                 },
                                     I18n.t('next_step', ctrl.scope())
