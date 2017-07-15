@@ -53,15 +53,6 @@ const projectsPayment = {
                         user: userData
                     },
                     config: h.setCsrfToken
-                }).then(() => {
-                    if (parsedErrors) {
-                        parsedErrors.resetFieldErrors();
-                    }
-                    loading(false);
-                    if (!showSuccess()) {
-                        showSuccess.toggle();
-                    }
-                    railsErrorsVM.validatePublish();
                 });
 
                 var contributionData = {
