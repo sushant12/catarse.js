@@ -43,11 +43,6 @@ const userContributedBox = {
                         'Value of support'
                     )
                 ),
-                m('.w-col.w-col-3',
-                    m('.fontsize-small.fontweight-semibold',
-                        'Support Status'
-                    )
-                ),
                 m('.w-col.w-col-4',
                     m('.fontsize-small.fontweight-semibold',
                         'Reward'
@@ -80,49 +75,49 @@ const userContributedBox = {
                         ` Rs ${contribution.value}`
                     ])
                 ),
-                m('.w-col.w-col-3.u-marginbottom-10', [
-                    m('.w-hidden-main.w-hidden-medium.fontsize-smallest.fontweight-semibold',
-                        'Status'
-                    ),
-
-                    m('.fontsize-smaller.fontweight-semibold', [
-                        m('.lineheight-tighter'),
-                        m(`span.fa.fa-circle.fontsize-smallest.${contribution.state === 'paid' ? 'text-success' : contribution.state === 'pending' ? 'text-waiting' : 'text-error'}`,
-                            m.trust('&nbsp;')
-                        ),
-                        I18n.t(contribution.state, I18nScope({
-                            date: h.momentify(contribution[`${contribution.state}_at`])
-                        }))
-                    ]),
-                    m('.fontsize-smallest',
-                        (contribution.installments > 1 ? (`${contribution.installments} x Rs ${contribution.installment_value} `) : ''),
-                        (contribution.payment_method === 'BoletoBancario' ? 'Boleto Bancário' : 'Cartão de Crédito')
-                    ),
-
-                    (contributionVM.canShowReceipt(contribution) ?
-                        m(`a.btn.btn-inline.btn-small.u-margintop-10.btn-terciary[href='http://www.grasruts.com/en/projects/${contribution.project_id}/contributions/${contribution.contribution_id}/receipt'][target='__blank']`,
-                            'View Receipt'
-                        ) : ''),
-
-                    (contributionVM.canShowSlip(contribution) ?
-                        m(`a.btn.btn-inline.btn-small.u-margintop-10[href='${contribution.gateway_data.boleto_url}'][target='__blank']`,
-                            'Imprimir boleto'
-                        ) : ''),
-
-                    (contributionVM.canGenerateSlip(contribution) ?
-                        m(`a.btn.btn-inline.btn-small.u-margintop-10[href='http://www.grasruts.com/en/projects/${contribution.project_id}/contributions/${contribution.contribution_id}/second_slip'][target='__blank']`,
-                            'Gerar 2a via'
-                        ) : ''),
-
-                    m('.w-checkbox.fontsize-smallest.fontcolor-secondary.u-margintop-10', [
-                        m(`input.w-checkbox-input[id='anonymous'][name='anonymous'][type='checkbox']${contribution.anonymous ? '[checked=\'checked\']' : ''}[value='1']`, {
-                            onclick: () => ctrl.toggleAnonymous(contribution.project_id, contribution)
-                        }),
-                        m('label.w-form-label',
-                            'I want my support not to be public'
-                        )
-                    ])
-                ]),
+                // m('.w-col.w-col-3.u-marginbottom-10', [
+                //     m('.w-hidden-main.w-hidden-medium.fontsize-smallest.fontweight-semibold',
+                //         'Status'
+                //     ),
+                //
+                //     m('.fontsize-smaller.fontweight-semibold', [
+                //         m('.lineheight-tighter'),
+                //         m(`span.fa.fa-circle.fontsize-smallest.${contribution.state === 'paid' ? 'text-success' : contribution.state === 'pending' ? 'text-waiting' : 'text-error'}`,
+                //             m.trust('&nbsp;')
+                //         ),
+                //         I18n.t(contribution.state, I18nScope({
+                //             date: h.momentify(contribution[`${contribution.state}_at`])
+                //         }))
+                //     ]),
+                //     m('.fontsize-smallest',
+                //         (contribution.installments > 1 ? (`${contribution.installments} x Rs ${contribution.installment_value} `) : ''),
+                //         (contribution.payment_method === 'BoletoBancario' ? 'Boleto Bancário' : 'Cartão de Crédito')
+                //     ),
+                //
+                //     (contributionVM.canShowReceipt(contribution) ?
+                //         m(`a.btn.btn-inline.btn-small.u-margintop-10.btn-terciary[href='http://www.grasruts.com/en/projects/${contribution.project_id}/contributions/${contribution.contribution_id}/receipt'][target='__blank']`,
+                //             'View Receipt'
+                //         ) : ''),
+                //
+                //     (contributionVM.canShowSlip(contribution) ?
+                //         m(`a.btn.btn-inline.btn-small.u-margintop-10[href='${contribution.gateway_data.boleto_url}'][target='__blank']`,
+                //             'Imprimir boleto'
+                //         ) : ''),
+                //
+                //     (contributionVM.canGenerateSlip(contribution) ?
+                //         m(`a.btn.btn-inline.btn-small.u-margintop-10[href='http://www.grasruts.com/en/projects/${contribution.project_id}/contributions/${contribution.contribution_id}/second_slip'][target='__blank']`,
+                //             'Gerar 2a via'
+                //         ) : ''),
+                //
+                //     m('.w-checkbox.fontsize-smallest.fontcolor-secondary.u-margintop-10', [
+                //         m(`input.w-checkbox-input[id='anonymous'][name='anonymous'][type='checkbox']${contribution.anonymous ? '[checked=\'checked\']' : ''}[value='1']`, {
+                //             onclick: () => ctrl.toggleAnonymous(contribution.project_id, contribution)
+                //         }),
+                //         m('label.w-form-label',
+                //             'I want my support not to be public'
+                //         )
+                //     ])
+                // ]),
                 m('.w-col.w-col-3',
                     m('.fontsize-smallest', [
                         m('span.w-hidden-main.w-hidden-medium.fontweight-semibold',
