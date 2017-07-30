@@ -157,7 +157,7 @@ const start = {
                             m('p.fontsize-small.start-stats', I18n.t('header.people', I18nScope()))
                         ]),
                         m('.w-col.w-col-4', [
-                            m('.fontsize-largest.lineheight-loose', `${stats.total_contributed.toString().slice(0, 2)} millions`),
+                            m('.fontsize-largest.lineheight-loose', `Rs ${stats.total_contributed.toString()}`),
                             m('p.fontsize-small.start-stats', I18n.t('header.money', I18nScope()))
                         ]),
                         m('.w-col.w-col-4', [
