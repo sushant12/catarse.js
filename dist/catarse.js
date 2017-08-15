@@ -3169,8 +3169,8 @@ var adminBalanceTranfers = {
                 view: function view(ctrl, args) {
                     actionMenuToggle(false);
                     return m('', [m('.modal-dialog-header', [m('.fontsize-large.u-text-center', args.modalTitle)]), m('.modal-dialog-content', [m('.w-row.fontweight-semibold', [m('.w-col.w-col-6', 'Nome'), m('.w-col.w-col-3', 'Valor'), m('.w-col.w-col-3', 'Solicitado em')]), _$1.map(selectedItemsIDs(), function (item, index) {
-                        return m('.divider.fontsize-smallest.lineheight-looser', [m('.w-row', [m('.w-col.w-col-6', [m('span', item.user_name)]), m('.w-col.w-col-3', [m('span', 'R$ ' + h.formatNumber(item.amount, 2, 3))]), m('.w-col.w-col-3', [m('span', h.momentify(item.created_at))])])]);
-                    }), m('.w-row.fontweight-semibold.divider', [m('.w-col.w-col-6', 'Total'), m('.w-col.w-col-3', 'R$ ' + h.formatNumber(_$1.reduce(selectedItemsIDs(), function (t, i) {
+                        return m('.divider.fontsize-smallest.lineheight-looser', [m('.w-row', [m('.w-col.w-col-6', [m('span', item.user_name)]), m('.w-col.w-col-3', [m('span', 'Rs ' + h.formatNumber(item.amount, 2, 3))]), m('.w-col.w-col-3', [m('span', h.momentify(item.created_at))])])]);
+                    }), m('.w-row.fontweight-semibold.divider', [m('.w-col.w-col-6', 'Total'), m('.w-col.w-col-3', 'Rs ' + h.formatNumber(_$1.reduce(selectedItemsIDs(), function (t, i) {
                         return t + i.amount;
                     }, 0), 2, 3)), m('.w-col.w-col-3')]), m('.w-row.u-margintop-40', [m('.w-col.w-col-1'), m('.w-col.w-col-5', m('a.btn.btn-medium.w-button', {
                         onclick: args.onClickCallback
@@ -5877,7 +5877,7 @@ var projectContributionReport = {
                 options = _$1.map(rewards(), function (r) {
                     return {
                         value: r.id,
-                        option: 'R$ ' + h.formatNumber(r.minimum_value, 2, 3) + ' - ' + (r.title ? r.title : r.description).substring(0, 20)
+                        option: 'Rs ' + h.formatNumber(r.minimum_value, 2, 3) + ' - ' + (r.title ? r.title : r.description).substring(0, 20)
                     };
                 });
             }
@@ -6981,7 +6981,7 @@ var projectSidebar = {
             var states = {
                 approved: I18n$1.t('display_status.approved', I18nScope$19()),
                 online: h.existy(project().zone_expires_at) && project().open_for_contributions ? I18n$1.t('display_status.online', I18nScope$19({ date: h.momentify(project().zone_expires_at) })) : '',
-                failed: I18n$1.t('display_status.failed', I18nScope$19({ date: h.momentify(project().zone_expires_at), goal: 'R$ ' + h.formatNumber(project().goal, 2, 3) })),
+                failed: I18n$1.t('display_status.failed', I18nScope$19({ date: h.momentify(project().zone_expires_at), goal: 'Rs ' + h.formatNumber(project().goal, 2, 3) })),
                 rejected: I18n$1.t('display_status.rejected', I18nScope$19()),
                 in_analysis: I18n$1.t('display_status.in_analysis', I18nScope$19()),
                 successful: I18n$1.t('display_status.successful', I18nScope$19({ date: h.momentify(project().zone_expires_at) })),
@@ -13902,7 +13902,7 @@ var menuProfile = {
 
         return m('.w-dropdown.user-profile', [m('.w-dropdown-toggle.dropdown-toggle.w-clearfix[id=\'user-menu\']', {
             onclick: ctrl.toggleMenu.toggle
-        }, [m('.user-name-menu', [m('.fontsize-smaller.lineheight-tightest.text-align-right', ctrl.userName()), ctrl.userBalance() > 0 ? m('.fontsize-smallest.fontweight-semibold.text-success', 'R$ ' + h.formatNumber(ctrl.userBalance(), 2, 3)) : '']), m('img.user-avatar[alt=\'Thumbnail - ' + user.name + '\'][height=\'40\'][src=\'' + h.useAvatarOrDefault(user.profile_img_thumbnail) + '\'][width=\'40\']')]), ctrl.toggleMenu() ? m('nav.w-dropdown-list.dropdown-list.user-menu.w--open[id=\'user-menu-dropdown\']', { style: 'display:block;' }, [m('.w-row', [m('.w-col.w-col-12', [m('.fontweight-semibold.fontsize-smaller.u-marginbottom-10', 'My History'), m('ul.w-list-unstyled.u-marginbottom-20', [
+        }, [m('.user-name-menu', [m('.fontsize-smaller.lineheight-tightest.text-align-right', ctrl.userName()), ctrl.userBalance() > 0 ? m('.fontsize-smallest.fontweight-semibold.text-success', 'Rs ' + h.formatNumber(ctrl.userBalance(), 2, 3)) : '']), m('img.user-avatar[alt=\'Thumbnail - ' + user.name + '\'][height=\'40\'][src=\'' + h.useAvatarOrDefault(user.profile_img_thumbnail) + '\'][width=\'40\']')]), ctrl.toggleMenu() ? m('nav.w-dropdown-list.dropdown-list.user-menu.w--open[id=\'user-menu-dropdown\']', { style: 'display:block;' }, [m('.w-row', [m('.w-col.w-col-12', [m('.fontweight-semibold.fontsize-smaller.u-marginbottom-10', 'My History'), m('ul.w-list-unstyled.u-marginbottom-20', [
         // m('li.lineheight-looser',
         //   m(`a.alt-link.fontsize-smaller[href='/en/users/${user.id}/edit#balance']`,
         //     m('span', [

@@ -143,7 +143,7 @@ const adminBalanceTranfers = {
                                                   m('span', item.user_name)
                                               ]),
                                               m('.w-col.w-col-3', [
-                                                  m('span', `R$ ${h.formatNumber(item.amount, 2, 3)}`)
+                                                  m('span', `Rs ${h.formatNumber(item.amount, 2, 3)}`)
                                               ]),
                                               m('.w-col.w-col-3', [
                                                   m('span', h.momentify(item.created_at))
@@ -154,7 +154,7 @@ const adminBalanceTranfers = {
                                   m('.w-row.fontweight-semibold.divider', [
                                       m('.w-col.w-col-6', 'Total'),
                                       m('.w-col.w-col-3', 
-                                        `R$ ${h.formatNumber(_.reduce(selectedItemsIDs(), (t, i) => {
+                                        `Rs ${h.formatNumber(_.reduce(selectedItemsIDs(), (t, i) => {
                                             return t + i.amount;
                                         }, 0), 2, 3)}`),
                                       m('.w-col.w-col-3'),
