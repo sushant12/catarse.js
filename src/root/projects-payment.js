@@ -77,7 +77,7 @@ const projectsPayment = {
                     config: h.setCsrfToken
                 });
 
-                return h.navigateTo('/support');
+                return h.navigateTo('/contribute');
             }
         };
 
