@@ -51,9 +51,9 @@ const thankYou = {
                 m('.w-row',
                   m('.w-col.w-col-10.w-col-push-1',
                       [
-                          m('.u-marginbottom-20.u-text-center',
-                          m(`img.big.thumb.u-round[src='${args.contribution.project.user_thumb}']`)
-                         ),
+                         //  m('.u-marginbottom-20.u-text-center',
+                         //  m(`img.big.thumb.u-round[src='${args.contribution.project.user_thumb}']`)
+                         // ),
                           m('#thank-you.u-text-center', !ctrl.isSlip ?
                           [
                               m('#creditcard-thank-you.fontsize-larger.text-success.u-marginbottom-20',
