@@ -15,6 +15,7 @@ const rewardSelectCard = {
         const queryRewardId = h.getParams('reward_id');
 
         const submitContribution = (event) => {
+            debugger
             const valueFloat = h.monetaryToFloat(rewardVM.contributionValue);
             const shippingFee = rewardVM.hasShippingOptions(rewardVM.selectedReward()) ? rewardVM.shippingFeeForCurrentReward(selectedDestination) : {
                 value: 0

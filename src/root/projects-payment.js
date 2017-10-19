@@ -77,7 +77,7 @@ const projectsPayment = {
                     config: h.setCsrfToken
                 });
 
-                return h.navigateTo('/contribute');
+                return h.navigateTo(`/projects/${projectVM.currentProject().project_id}/contributions/${contribution().id}/payment_method`);
             }
         };
 
