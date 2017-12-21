@@ -165,7 +165,8 @@ const footer = {
                                 m('a.link-footer-inline[href=\'https://github.com/sushant12/jvn\'][target=\'blank\']',
                                     I18n.t('texts.copyleft', I18nScope()) + ` | ${new Date().getFullYear()} | Open Source`
                                 )
-                            )
+                            ),
+                            m('img.u-marginbottom-20[alt=\'Logo footer\'][src=\'/assets/pme2.png\']')
                         ]
                     )
                 )
