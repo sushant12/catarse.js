@@ -6698,7 +6698,7 @@ var projectReminder = {
 
         return m('#project-reminder' + mainClass, [m('a.btn.btn-small.btn-terciary.w-hidden-main.w-hidden-medium[data-ix=\'popshare\'][href=\'#\']', {
             onclick: onclickFunc
-        }, project().in_reminder ? [m('span.fa.fa-heart'), 'Active Reminder'] : [m('span.fa.fa-heart-o'), ' Remember Me Forgot your password?']), m('button[class="w-hidden-small w-hidden-tiny ' + buttonClass + ' ' + (project().in_reminder ? 'link-hidden-success' : 'fontcolor-secondary') + ' fontweight-semibold"]', {
+        }, project().in_reminder ? [m('span.fa.fa-heart'), 'I dont love it'] : [m('span.fa.fa-heart-o'), ' I love it']), m('button[class="w-hidden-small w-hidden-tiny ' + buttonClass + ' ' + (project().in_reminder ? 'link-hidden-success' : 'fontcolor-secondary') + ' fontweight-semibold"]', {
             onclick: onclickFunc
         }, [ctrl.l() ? h.loader() : project().in_reminder ? m('span.fa.fa-heart') : m('span.fa.fa-heart-o')]), ctrl.popNotification() ? m.component(popNotification, {
             message: 'OK! We`ll email you a reminder 48 hours before the end of the campaign'

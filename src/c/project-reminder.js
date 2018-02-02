@@ -71,13 +71,12 @@ const projectReminder = {
             m('a.btn.btn-small.btn-terciary.w-hidden-main.w-hidden-medium[data-ix=\'popshare\'][href=\'#\']', {
                 onclick: onclickFunc
             },
-
               (project().in_reminder ? [
                   m('span.fa.fa-heart'),
-                  'Active Reminder'
+                  'I dont love it'
               ] : [
                   m('span.fa.fa-heart-o'),
-                  ' Remember Me Forgot your password?'
+                  ' I love it'
               ])
             ),
 
