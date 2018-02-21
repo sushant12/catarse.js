@@ -43,7 +43,7 @@ const footer = {
                                                 m('a.link-footer[href=\'https://github.com/sushant12/jvn\'][target=\'__blank\']',
                                                     ' Github'
                                                 ),
-                                                m('a.link-footer[href=\'https://medium.com/grasruts\'][target=\'__blank\']',
+                                                m('a.link-footer[href=\'http://blogs.grasruts.com\'][target=\'__blank\']',
                                                     ' Blog'
                                                 ),
                                                 m('a.link-footer[href=\'/jobs?ref=ctrse_footer\']',
