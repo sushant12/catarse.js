@@ -19,11 +19,11 @@ const blogBanner : Component = {
                 [
                     m('.u-text-center',
                         [
-                            m('a[href=\'https://medium.com/grasruts\'][target=\'blank\']',
+                            m('a[href=\'http://blogs.grasruts.com\'][target=\'blank\']',
                                 m('img.u-marginbottom-10[alt=\'Icon blog\'][src=\'/assets/icon-blog.png\']')
                             ),
                             m('.fontsize-large.u-marginbottom-60.text-success',
-                                m('a.link-hidden-success[href=\'https://medium.com/grasruts\'][target=\'__blank\']',
+                                m('a.link-hidden-success[href=\'http://blogs.grasruts.com\'][target=\'__blank\']',
                                     'Grasruts Blogs'
                                 )
                             )

@@ -65,15 +65,6 @@ const footer = {
                                                 m('a.link-footer[href=\'https://grasruts.zendesk.com/hc/en-us/requests/new\'][target="_BLANK"]',
                                                     I18n.t('links.contact', I18nScope())
                                                 ),
-                                                // m('a.link-footer[href=\'http://crowdfunding.catarse.me/nossa-taxa?ref=ctrse_footer\']',
-                                                //     [
-                                                //         I18n.t('links.rate', I18nScope()),
-                                                //         m.trust('&nbsp;')
-                                                //     ]
-                                                // ),
-                                                // m('a.link-footer[href=\'/press?ref=ctrse_footer\']',
-                                                //     I18n.t('links.press', I18nScope())
-                                                // ),
                                                 m('a.link-footer[href=\'https://grasruts.zendesk.com/hc/en-us/\'][target="_BLANK"]',
                                                     I18n.t('links.help_support', I18nScope())
                                                 ),
@@ -96,7 +87,7 @@ const footer = {
                                                 m('a.link-footer[href=\'/en/explore?ref=ctrse_footer\']',
                                                     I18n.t('links.discover', I18nScope())
                                                 ),
-                                                m('a.w-hidden-main.w-hidden-medium.w-hidden-small.link-footer[href=\'https://medium.com/grasruts?ref=ctrse_footer\']',
+                                                m('a.w-hidden-main.w-hidden-medium.w-hidden-small.link-footer[href=\'http://blogs.grasruts.com?ref=ctrse_footer\']',
                                                     ' Blog'
                                                 ),
                                                 m('a.w-hidden-main.w-hidden-medium.w-hidden-small.link-footer[href=\'#\']',
