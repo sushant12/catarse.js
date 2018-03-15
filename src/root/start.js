@@ -161,7 +161,8 @@ const start = {
                             m('p.fontsize-small.start-stats', I18n.t('header.money', I18nScope()))
                         ]),
                         m('.w-col.w-col-4', [
-                            m('.fontsize-largest.lineheight-loose', h.formatNumber(stats.total_projects_success, 0, 3)),
+                            // m('.fontsize-largest.lineheight-loose', h.formatNumber(stats.total_projects_success, 0, 3)),
+                            m('.fontsize-largest.lineheight-loose', 1),
                             m('p.fontsize-small.start-stats', I18n.t('header.success', I18nScope()))
                         ])
                     ])
