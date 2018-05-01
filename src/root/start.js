@@ -296,7 +296,7 @@ const start = {
                         m('.u-text-center.u-marginbottom-30',
                             [
                                 m('.fontsize-large.fontweight-semibold',
-                                    I18n.t('mode.tax_info', I18nScope())
+                                    m.trust(I18n.t('mode.tax_info', I18nScope()))
                                 )
                             ]
                         )
